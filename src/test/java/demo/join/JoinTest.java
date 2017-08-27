@@ -79,6 +79,12 @@ public class JoinTest {
     }
 
 
+    /**
+     * <code>
+     * // onuPmReport join onu
+     * db.onuPmReport.findOne({}).onu.fetch();
+     * </code>
+     */
     @Test
     public void query() {
         Query query = new Query();

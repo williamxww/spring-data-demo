@@ -154,13 +154,15 @@ public class JoinTest {
 
         Aggregation aggregation = Aggregation.newAggregation(
                 // onuPmReport left join onu on onuPmReport.oId = onu._id where onuPmReport._id=4;
-                 Aggregation.match(Criteria.where("_id").is(4)),
+                 Aggregation.match(Criteria.where("_id").is(5)),
+
                 // 构造lookup
                 new CustomAggregationOperation(new BasicDBObject("$lookup",
                 new BasicDBObject("from", "onu")
                         .append("localField", "oId")
                         .append("foreignField", "_id")
-                        .append("as", "right")))
+                        .append("as", "right"))),
+                Aggregation.match(Criteria.where("right.onuName").is("ONU NAME002"))
                         );
         AggregationResults<OnuPmReport> reports = template.aggregate(aggregation, "onuPmReport", OnuPmReport.class);
         for (OnuPmReport r : reports) {

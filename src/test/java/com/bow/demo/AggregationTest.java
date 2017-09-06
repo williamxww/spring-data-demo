@@ -1,4 +1,4 @@
-package com.bow.demo.join;
+package com.bow.demo;
 
 import com.alibaba.fastjson.JSON;
 import com.bow.dao.aggregation.CustomAggregationOperation;

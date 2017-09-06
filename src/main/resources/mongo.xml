@@ -13,7 +13,8 @@
 		http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd
 		">
 
-    <mongo:mongo-client id="mongo" host="127.0.0.1" port="27017" credentials="admin:admin@admin">
+    <!-- credentials="admin:admin@admin" -->
+    <mongo:mongo-client id="mongo" host="127.0.0.1" port="30000" >
         <mongo:client-options
                 socket-keep-alive="true"
                 max-connection-idle-time="300000"
@@ -24,7 +25,7 @@
                 max-wait-time="120000"
                 threads-allowed-to-block-for-connection-multiplier="50"/>
     </mongo:mongo-client>
-    <mongo:db-factory id="mongoDbFactory" dbname="test" mongo-ref="mongo"/>
+    <mongo:db-factory id="mongoDbFactory" dbname="testdb" mongo-ref="mongo"/>
 
     <bean id="mappingContext"
           class="org.springframework.data.mongodb.core.mapping.MongoMappingContext"/>

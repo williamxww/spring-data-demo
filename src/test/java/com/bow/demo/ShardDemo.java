@@ -1,4 +1,4 @@
-package com.bow.demo.join;
+package com.bow.demo;
 
 import com.bow.dao.CacheONUPONPortReport;
 import org.junit.Before;
@@ -28,7 +28,7 @@ public class ShardDemo {
 
 	@Test
 	public void saveOnu() {
-		for (int i = 0; i < 100; i++) {
+		for (int i = 2; i < 100; i++) {
 			List<CacheONUPONPortReport> reports = mockOnuPonPortInfo(i);
 			template.insert(reports, "cacheONUPONPortReport");
 		}

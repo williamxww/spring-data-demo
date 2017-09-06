@@ -28,30 +28,12 @@ public class OnuPmReport {
 
     private Double temperature;
 
-    /**
-     * 通过$lookup进行查询，外键
-     */
-    private String oId;
-
-    /**
-     * lookup查询用来接收结果
-     */
-    private List<Onu> right;
-
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getoId() {
-        return oId;
-    }
-
-    public void setoId(String oId) {
-        this.oId = oId;
     }
 
     public Double getUpSpeed() {
@@ -86,11 +68,4 @@ public class OnuPmReport {
         this.onu = onu;
     }
 
-    public List<Onu> getRight() {
-        return right;
-    }
-
-    public void setRight(List<Onu> right) {
-        this.right = right;
-    }
 }

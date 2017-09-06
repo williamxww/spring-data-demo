@@ -1,4 +1,4 @@
-package demo.join;
+package com.bow.demo.join;
 
 import com.alibaba.fastjson.JSON;
 import com.bow.dao.aggregation.CustomAggregationOperation;
@@ -51,7 +51,6 @@ public class JoinTest {
 
         OnuPmReport report = new OnuPmReport();
         report.setId(1);
-        report.setoId(id);
         // 通过引用嵌入文档
         report.setOnu(o1);
         report.setCpuUsage(0.9);
@@ -103,11 +102,15 @@ public class JoinTest {
      */
     @Test
     public void query2() {
+
+
         Query q1 = new Query();
         Criteria c1 = Criteria.where("onuName").is("ONU NAME001");
         q1.addCriteria(c1);
-        List<Onu> r1 = template.find(q1, Onu.class);
-        for (Onu o : r1) {
+        List<Onu> onus = template.find(q1, Onu.class);
+
+
+        for (Onu o : onus) {
             String oid = o.getId();
             Query q2 = new Query();
             Criteria c2 = Criteria.where("onu.id").is(oid);
@@ -124,8 +127,6 @@ public class JoinTest {
     public void savePm() {
         OnuPmReport report = new OnuPmReport();
         report.setId(4);
-        // 外联的字段
-        report.setoId("10001-10-100-1-1000");
         report.setCpuUsage(0.9);
         report.setTemperature(50.0);
         report.setUpSpeed(0.3);
@@ -167,10 +168,10 @@ public class JoinTest {
         AggregationResults<OnuPmReport> reports = template.aggregate(aggregation, "onuPmReport", OnuPmReport.class);
         for (OnuPmReport r : reports) {
             // 获取右连的表
-            List<Onu> right = r.getRight();
-            for(Onu o: right){
-                System.out.println(o.getOnuName());
-            }
+//            List<Onu> right = r.getRight();
+//            for(Onu o: right){
+//                System.out.println(o.getOnuName());
+//            }
         }
     }
 }
